@@ -6,9 +6,7 @@ const Header = () => {
       <article className="max-w-screen-lg w-full">
         <nav className="flex justify-between items-center">
           <h1 className="font-bold text-2xl text-white">TODO</h1>
-          <button>
-            <img src="/svg/moon.svg" alt="botón modo oscuro" title="dark"></img>
-          </button>
+          
         </nav>
         
         <article className="flex justify-center items-center mt-10">

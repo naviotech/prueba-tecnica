@@ -2,11 +2,23 @@ import useList from "../hooks/useList"
 import { ListTareas } from "../context/useContextList"
 
 const TodoList = () => {
-  const { list, setList }  = useList()
+  const { list, setList, setUpdate }  = useList()
 
   const handleDelete = (id:string) =>{
     
     const newList = list.filter((item: ListTareas) => item.id !== id)
+    setList(newList)
+    localStorage.setItem("tareas", JSON.stringify(newList))
+  }
+
+  const handleClick = (id:string)=>{
+    const newList = list.map((item)=>{
+      if(item.id === id){
+        item.checked = !item.checked
+        return item
+      }
+      return item
+    })
     setList(newList)
     localStorage.setItem("tareas", JSON.stringify(newList))
   }
@@ -16,11 +28,12 @@ const TodoList = () => {
       {list.length>0 ? (list.map((tarea)=>(
         <article key={tarea.id} className="w-full flex justify-between rounded-lg py-4 px-5 bg-white shadow-lg">
           <div className="flex items-center gap-2 flex-wrap">
-            <input type="checkbox" name="tick" id="tick" className="rounded-xl peer/check cursor-pointer" />
-            <p className="capitalize peer-checked/check:line-through">{tarea.description}</p>
+            <input onChange={()=>handleClick(tarea.id)} checked={tarea.checked} type="checkbox" name="tick" id="tick" className="rounded-xl peer/check cursor-pointer" />
+            <p className="capitalize peer-checked/check:line-through peer-checked/check:text-black/50 ">{tarea.description}</p>
           </div>
           
           <div className="flex gap-4">
+            <img onClick={()=>setUpdate({id:tarea.id,description:tarea.description, checked: tarea.checked})} src="svg/edit.svg" className="hover:transform cursor-pointer hover:scale-110"></img>
             <img onClick={()=>handleDelete(tarea.id)} src="svg/close.svg" className="hover:transform cursor-pointer hover:scale-110"></img>
           </div>
         </article>
