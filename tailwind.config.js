@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       backgroundImage:{
-        "mobile-light": 'url("./public/img/image-mobile-light.png")',
-        "desktop-light": 'url("./public/img/image-desktop-light.png")',
-        "mobile-dark": 'url("./public/img/image-mobile.png")',
-        "desktop-dark": 'url("./public/img/desktop-dark.png")',
+        "mobile-light": 'url("/img/image-mobile-light.png")',
+        "desktop-light": 'url("/img/image-desktop-light.png")',
+        "mobile-dark": 'url("/img/image-mobile.png")',
+        "desktop-dark": 'url("/img/desktop-dark.png")',
       }
     },
   },
