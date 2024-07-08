@@ -9,7 +9,7 @@ const Header = () => {
           
         </nav>
         
-        <article className="flex justify-center items-center mt-10">
+        <article className="flex justify-center items-center mt-20">
           <Form/>
         </article>
       </article>

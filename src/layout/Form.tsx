@@ -3,10 +3,13 @@ import useList from "../hooks/useList"
 import {v4 as uuidv4} from 'uuid'
 import { ListTareas } from "../context/useContextList"
 import { useEffect } from "react"
+import { Alerta } from "../Components/FormAlert"
 
 const Form = () => {
   const {list, setList, update, setUpdate} = useList()
 
+  const [alerta, setAlerta] = useState({message:"",error: false})
+  const [visible ,setVisible] = useState(false)
   const [id, setId]= useState('')
   const [edit, setEdit] = useState(false)
   const [input, setInput] = useState<string>('')
@@ -14,9 +17,13 @@ const Form = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     if(input === ''){
+      setAlerta({ message: "El campo no puede estar vacío", error: true });
+      setVisible(true)
       return
     }
     if(input.length<4){
+      setAlerta({ message: "La tarea debe contener mínimo 4 caracteres", error: true });
+      setVisible(true)
       return 
     }
     if(!edit){
@@ -58,12 +65,25 @@ const Form = () => {
       setUpdate(null)
     }
   },[update, setUpdate])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [visible])
+
   return (
     <>
-      <form className="w-full flex items-center gap-2 max-w-screen-sm md:mt-12" onSubmit={handleSubmit}>
+      
+      <form className="w-full flex items-center gap-2 max-w-screen-sm md:mt-12 flex-col" onSubmit={handleSubmit}>
+        {visible && <Alerta alerta={alerta} />}
+        <div className="flex gap-2">
+          <input value={input?? ""} onChange={(e)=>setInput(e.target.value)} className='w-full px-5 py-3 rounded-lg outline-none' type='text' id='text' placeholder='Ingresa una nueva tarea...'></input>
+          <button className="py-3 px-3 bg-green-500 rounded-lg font-bold text-white hover:bg-[#AC2DEB]">Agregar</button>
         
-        <input value={input?? ""} onChange={(e)=>setInput(e.target.value)} className='w-full px-5 py-3 rounded-lg outline-none' type='text' id='text' placeholder='Ingresa una nueva tarea...'></input>
-        <button className="py-3 px-3 bg-green-500 rounded-lg font-bold text-white hover:bg-[#AC2DEB]">Agregar</button>
+        </div>
         
       </form>
     </>
