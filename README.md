@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# Prueba tecnica TodoApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Tecnologias Utilizadas 
 
-Currently, two official plugins are available:
+- npm: Para la gestión de paquetes y dependencias.
+- Vite: Como herramienta de construcción y servidor de desarrollo.
+- JavaScript (JS): Para la funcionalidad y lógica de la aplicación.
+- Tailwind CSS: Para el diseño y estilo de la interfaz.
+- HTML: Para la estructura básica de las páginas.
+- React: Como biblioteca principal para la construcción de la interfaz de usuario.
+- TypeScript: Para añadir tipado estático y mejorar la calidad del código junto con React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Dependencias
 
-## Expanding the ESLint configuration
+- uuid: Dependencia que genera numeros unicos (Para los identificadores unicos de las tareas creadas).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Planteamiento del ejercicio 1
+ - Utilizamos un contexto global en react y lo asignamos a un array de objetos que contendra todas nuestras tareas agrupadas, mediante este contexto global, nos facilitara el acceso a la         variable desde cualquier componente de esta manera hacemos el desarrollo mas rapido sin tener que pasar por props y generar cascadas.
+- Tambien asignamos una segunda variable al contexto global que utilizaremos para saber cuando queremos hacer un edit de alguna de nuestras tareas.
+- Una vez tenemos esto creamos un formulario de entrada para introducir las tareas a las cuales se le asigna a cada una un id, descripción y si esta completada o pendiente. Cuando se crea la tarea se añade a la lista de tareas la cual se renderiza en el componente todoList.
+- Se añade en todoList la funcionalidad con un input de tipo checkbox la posibilidad de marcar las tareas como completadas para llevar un registro mas adecuado.
+- En este componente para finalizar creamos tres estados para mostrar a disposición del usuario que tareas desea mirar (todas, las pendientes o las completadas) que se renderizan dependiendo de cada tarea si esta marcada como checked true o false.
 
-- Configure the top-level `parserOptions` property like this:
+## Ejercicio 2 
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- El ejercicio 2 esta situado en el archivo del repositorio llamado <strong>"logic_exercices.tsx"</strong>, ejercicios de algoritmos para evaluar la lógica.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Ejercicio 3
+
+- Nueva rama creada <strong>"feature-1"</strong> en la que se realizan actualizaciones y nuevas funcionalidades del proyecto y se hace un pull request a la rama main y se mergean.
+
+## Autor
+
+- **Nombre:** Eduardo Navio Maya
+- **Contacto:** [![GMAIL](https://img.shields.io/badge/naviomaya%40gmail.com%20-%20%20DISCORD?style=social&logo=GMAIL&labelColor=black&color=white)](mailto:naviomaya@gmail.com)
+- **Link al Proyecto:** [Proyecto](https://todo-app-naviotech.netlify.app/)
+
